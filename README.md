@@ -1,11 +1,9 @@
 # SumoRobot controls over the Android application 
 
-![alt text](https://github.com/mohanad86/webrobo/blob/master/images/20160418_192127.jpg)
-![alt text](https://github.com/mohanad86/webrobo/blob/master/images/20160418_192201.jpg)
-![alt text](https://github.com/mohanad86/webrobo/blob/master/images/Screenshot%20from%202016-04-22%2019-48-34.jpg)
+![alt text](https://github.com/mohanad86/My-Robot-App/blob/master/images/Screenshot_2016-08-10-21-59-07.png)
+![alt text](https://github.com/mohanad86/My-Robot-App/blob/master/images/Screenshot_2016-08-10-21-52-44.png)
+![alt text](https://github.com/mohanad86/My-Robot-App/blob/master/images/20160810_220841.jpg)
 ![alt text](https://github.com/mohanad86/webrobo/blob/master/images/Screenshot%20from%202016-05-03%2017-39-09.jpg)
-# Last interface
-![alt text](https://github.com/mohanad86/webrobo/blob/master/images/Screenshot%20from%202016-05-25%2011-27-55.jpg)
 
 
 ### If you are using Ubuntu platform
