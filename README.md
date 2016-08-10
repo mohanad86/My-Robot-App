@@ -26,6 +26,7 @@ $ sudo apt-get update
 $ sudo apt-get install oracle-java8-installer
 This is the easiest way to install the new version of Java
 ```
+
 ```sh
 Don't forget to install the following libraries to make the program work 
 if you are running a 64-bit version of Ubuntu, you need to install some 
