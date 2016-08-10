@@ -3,7 +3,6 @@
 ![alt text](https://github.com/mohanad86/My-Robot-App/blob/master/images/Screenshot_2016-08-10-21-59-07.png)
 ![alt text](https://github.com/mohanad86/My-Robot-App/blob/master/images/Screenshot_2016-08-10-21-52-44.png)
 ![alt text](https://github.com/mohanad86/My-Robot-App/blob/master/images/20160810_220841.jpg)
-![alt text](https://github.com/mohanad86/webrobo/blob/master/images/Screenshot%20from%202016-05-03%2017-39-09.jpg)
 
 
 ### If you are using Ubuntu platform
