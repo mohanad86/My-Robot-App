@@ -254,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case MotionEvent.ACTION_UP:
-                        RobotDo("blues");
+                        RobotDo("bluesoff");
                         break;
                 }
 
@@ -273,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case MotionEvent.ACTION_UP:
-                        RobotDo("reds");
+                        RobotDo("redsoff");
                         break;
                 }
 
@@ -293,7 +293,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case MotionEvent.ACTION_UP:
-                        RobotDo("lightall");
+                        RobotDo("lightalloff");
                         break;
                 }
 
