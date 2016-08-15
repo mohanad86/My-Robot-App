@@ -32,14 +32,17 @@ import java.util.TimerTask;
 
 
 public class MainActivity extends AppCompatActivity {
-    //This the function that request the url from the robot
+    //This the function that request the url from the robot from the Python Code
     private void RobotDo(String action) {
+        // URL has to be define
         URL url = null;
         try {
             url = new URL("http://192.168.12.5:5000/"+action);
+          //If the URL is not correct it will thorw the errors   
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+        //This is the connection to the server
         HttpURLConnection urlConnection = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         try {
+            //Retake the data from the server
             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
             BufferedReader r = new BufferedReader(new InputStreamReader(in));
             StringBuilder total = new StringBuilder();
@@ -57,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d("RobotDo", total.toString());
         } catch (IOException e) {
             e.printStackTrace();
+            //It will disconnect the connection from the server
         } finally {
             urlConnection.disconnect();
         }
@@ -85,12 +90,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
             try {
+            //It will create the object from the data return from the server(batterystatus)
                 JSONObject reader = new JSONObject(total.toString());
                 TextView myAwesomeTextView = (TextView)findViewById(R.id.status);
 
                 //in your OnCreate() method
                 myAwesomeTextView.setText("enemy_right: "+Integer.toString(reader.getInt("enemy_right")) + "\nenemy_left: "+Integer.toString(reader.getInt("enemy_left")));
                 Button leftButton = (Button) findViewById(R.id.left);
+                //This for the changes the buttons colors 
                 if (reader.getInt("enemy_left")== 1) {
                     leftButton.setBackgroundColor(Color.RED);
 
@@ -127,15 +134,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+    //Making the requests of the (RobotDo) and (batterystatus) in the main process
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
+    
         StrictMode.setThreadPolicy(policy);
-
+    //Android   
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+    //Android 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
         myWebView.loadUrl(webcam_url);
 
 
-
+    //This will refresh the batterystatus and camera 
         Timer autoUpdate = new Timer();
         autoUpdate.schedule(new TimerTask() {
             @Override
@@ -172,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
         //    RobotDo("right");
         //}
         // });
-
+    
         Button button = (Button) findViewById(R.id.go);
         button.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -190,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        final Button button1 = (Button) findViewById(R.id.left);
+        Button button1 = (Button) findViewById(R.id.left);
         button1.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -305,14 +313,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+    //Android
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
+    //Android
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
