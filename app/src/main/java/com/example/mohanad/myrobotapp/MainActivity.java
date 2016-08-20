@@ -1,5 +1,4 @@
 package com.example.mohanad.myrobotapp;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -15,10 +14,8 @@ import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -37,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         // URL has to be define
         URL url = null;
         try {
-            url = new URL("http://192.168.12.5:5000/"+action);
-          //If the URL is not correct it will thorw the errors   
+            url = new URL("http://192.168.12.152:5000/"+action);
+        //If the URL is not correct it will thorw the errors   
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -66,11 +63,11 @@ public class MainActivity extends AppCompatActivity {
             urlConnection.disconnect();
         }
     }
-
+    //Requesting The batterystatus information 
     private void getBattery(){
         URL url = null;
         try {
-            url = new URL("http://192.168.12.5:5000/batterystatus");
+            url = new URL("http://192.168.12.152:5000/batterystatus");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -97,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 //in your OnCreate() method
                 myAwesomeTextView.setText("enemy_right: "+Integer.toString(reader.getInt("enemy_right")) + "\nenemy_left: "+Integer.toString(reader.getInt("enemy_left")));
                 Button leftButton = (Button) findViewById(R.id.left);
-                //This for the changes the buttons colors 
+                //This for the changes the buttons colors when the reads come from the sensors  
                 if (reader.getInt("enemy_left")== 1) {
                     leftButton.setBackgroundColor(Color.RED);
 
@@ -134,16 +131,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-    //Making the requests of the (RobotDo) and (batterystatus) in the main process
+        //Making the requests of the (RobotDo) and (batterystatus) in the main process
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
     
         StrictMode.setThreadPolicy(policy);
-    //Android   
+        //Android   
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-    //Android 
+        //Android 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,12 +150,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //Function request the camera feed
-        final String webcam_url = "http://192.168.12.5:5000/static/camera.html";
+        final String webcam_url = "http://192.168.12.152:5000/static/camera.html";
         final WebView myWebView = (WebView) findViewById(R.id.webview);
         myWebView.loadUrl(webcam_url);
 
 
-    //This will refresh the batterystatus and camera 
+        //This will refresh the batterystatus and camera 
         Timer autoUpdate = new Timer();
         autoUpdate.schedule(new TimerTask() {
             @Override
